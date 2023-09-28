@@ -1,0 +1,64 @@
+@font-face {
+    font-family: Carolina;
+    src: url(../fonts/Carolina.ttf);
+}
+
+@font-face {
+    font-family: Raleway;
+    src: url(../fonts/Raleway-Bold.ttf);
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins-Regular.ttf);
+}
+
+.name {
+    font-family: Poppins;
+    font-size: 28pt;
+    margin-top: 13cm;
+    margin-bottom: 0cm;
+    text-align: center;
+}
+
+.team {
+    font-family: Poppins;
+    font-size: 16pt;
+    margin-top: 0.9cm;
+    margin-bottom: 0cm;
+    text-align: center;
+}
+
+.rank {
+    font-family: Poppins;
+    font-size: 16pt;
+    margin-top: 0.9cm;
+    text-align: left;
+    margin-bottom: 0cm;
+    padding-left: 4cm;
+}
+
+.timing {
+    font-family: Poppins;
+    font-size: 16pt;
+    margin-top: -0.8cm;
+    margin-bottom: 0cm;
+    text-align: right;
+    margin-right: 4cm;
+}
+
+.event {
+    font-family: Poppins;
+    font-size: 16pt;
+    margin-top: 0.8cm;
+    margin-bottom: 0cm;
+    text-align: center;
+}
+
+.group {
+    font-family: Poppins;
+    font-size: 16pt;
+    margin-top: 0.8cm;
+    margin-bottom: 0cm;
+    text-align: center;
+}

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Print Certificate</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h2>Print Certificate</h2>
+        <br/>
+        <div class="col-md-3">
+            <label for="eventsSelect" class="form-label">Event</label>
+            <select class="form-select" id="eventsSelect" onchange="selectEvent(this)">
+                <option selected disabled value="">Choose...</option>
+            </select>
+        </div>
+        <br/>
+        <h3>Merit Details</h3>
+        <br/>
+        <div class="row">
+            <div class="col-md-4">
+                <h5>First</h5>
+                <hr/>
+                <label for="first_name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="first_name" list="names" onchange="text_changed('first_name')" value="" required>
+                <label for="first_team" class="form-label">Team</label>
+                <input type="text" class="form-control" id="first_team" list="teams" onchange="text_changed('first_team')" value="" required>
+                <label for="first_timing" class="form-label">Timing</label>
+                <input type="text" class="form-control" id="first_timing" onchange="text_changed('first_timing')" required>
+            </div>
+            <div class="col-md-4">
+                <h5>Second</h5>
+                <hr/>
+                <label for="second_name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="second_name" list="names" value="" onchange="text_changed('second_name')" required>
+                <label for="second_team" class="form-label">Team</label>
+                <input type="text" class="form-control" id="second_team" list="teams" value="" onchange="text_changed('second_team')" required>
+                <label for="second_timing" class="form-label">Timing</label>
+                <input type="text" class="form-control" id="second_timing" onchange="text_changed('second_timing')" required>
+            </div>
+            <div class="col-md-4">
+                <h5>Third</h5>
+                <hr/>
+                <label for="third_name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="third_name" list="names" value="" onchange="text_changed('third_name')" required>
+                <label for="third_team" class="form-label">Team</label>
+                <input type="text" class="form-control" id="third_team" list="teams" value="" onchange="text_changed('third_team')" required>
+                <label for="third_timing" class="form-label">Timing</label>
+                <input type="text" class="form-control" id="third_timing" onchange="text_changed('third_timing')" required>
+                <br/>
+            </div>
+        </div>
+        <a class="btn btn-primary btn-lg float-right" href="certi.html" target="_blank">Print</a>
+        <datalist id="teams">
+          </datalist>
+        <datalist id="names">
+        </datalist>
+    </div>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        for (i = 0; i < events_data.length; i = i + 1) {
+            var opt = document.createElement('OPTION');
+            opt.text = `${events_data[i]["eno"]}. ${events_data[i]["event"]} Group ${events_data[i]["group"]} ${events_data[i]["gender"]}`;
+            opt.value = [events_data[i]["eno"], events_data[i]["event"], events_data[i]["group"], events_data[i]["gender"]];
+            document.getElementById('eventsSelect').options.add(opt);
+        }
+
+        var names_options = '';
+        for (i = 0; i < participants_list.length; i = i + 1) {
+            //var opt = document.createElement('OPTION');
+            //opt.value = participants_list[i]
+            //document.getElementById('names').options.add(opt);
+            names_options += '<option value="' + participants_list[i] + '" />';
+        }
+        document.getElementById('names').innerHTML = names_options;
+
+        var teams_options = '';
+        for (i = 0; i < teams_list.length; i = i + 1) {
+            //var opt = document.createElement('OPTION');
+            //opt.value = teams_list[i]
+            //document.getElementById('teams').options.add(opt);
+            teams_options += '<option value="' + teams_list[i] + '" />';
+        }
+        document.getElementById('teams').innerHTML = teams_options;
+
+        const selectEvent = (e) => {
+            var value = e.value;
+            console.log("value", value);
+            let evnt = value.split(",")
+            localStorage.setItem("event", evnt[1]);
+            localStorage.setItem("group", `Group ${evnt[2]} ${evnt[3]}`);
+        }
+
+        const text_changed = (el) => {
+            var x = document.getElementById(el);
+            console.log(el, x.value);
+            localStorage.setItem(el, x.value);
+        }
+    </script>
+</body>
+
+</html>
